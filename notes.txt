@@ -1,0 +1,23 @@
+//\\ بسم الله الرحمن الرحيم //\\
+//mybranchname
+//loginandregister2
+
+git pull //to get the latest repository
+git switch -c YourBranchName // 
+// you will be transfered to the new branch 
+//after working on the code 
+//to post your work
+git add .
+git commit -m "your comment"
+git push
+git push --set-upstream origin YourBranchName // we agree to name using our own and work
+//to post your work
+//in github
+
+
+//setup
+//npm i axios
+//npm i @tanstack/react-query
+//npm install @react-navigation/native //getting started
+//npm install @react-navigation/stack //stack
+//npm install react-native-gesture-handler //If you have a bare React Native project, in your project directory, run:
