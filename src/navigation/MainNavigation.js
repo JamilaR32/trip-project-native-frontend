@@ -2,15 +2,35 @@ import { Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigation from "./home/HomeNavigation";
+import AuthNavigation from "./AuthNavigation";
+import ROUTES from ".";
 
-
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 const MainNavigation = () => {
   return (
-   <Tab.Navigator>
-    <Tab.Screen component={HomeNavigation}/>
-    <Tab.Screen component={}/>
-   </Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        options={{
+          title: "Home",
+          //   tabBarIcon: {
+          //     color: "red",
+          //   },
+        }}
+        name={ROUTES.HOME_NAVIGATION.INDEX}
+        component={HomeNavigation}
+      />
+      <Tab.Screen
+        options={{
+          title: "Profile",
+        }}
+        name={ROUTES.AUTH_NAVIGATION.INDEX}
+        component={AuthNavigation}
+      />
+    </Tab.Navigator>
   );
 };
 

@@ -1,11 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import MainNavigation from "./src/navigation/MainNavigation";
+import { NavigationContainer } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function App() {
+  // const [user, setUser] = useState(false);
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={new QueryClient()}>
+      <NavigationContainer>
+        <MainNavigation />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
