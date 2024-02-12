@@ -3,6 +3,7 @@
 //
 import {
   Button,
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -11,6 +12,7 @@ import {
 } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import ROUTES from "../../navigation";
 
 const Register = () => {
   const navigation = useNavigation();

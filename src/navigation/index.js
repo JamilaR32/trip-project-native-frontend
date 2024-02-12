@@ -1,17 +1,23 @@
 //\\ بسم الله الرحمن الرحيم //\\
 const ROUTES = {
-  AUTH_NAVIGATION: {
-    LOGIN: "login",
-    REGISTER: "register",
-  },
-  HOME_NAVIGATION: {
-    INDEX: "Home navigation",
-    HOME: "home",
-    CARD_DETAIL: "Card Detail",
-    IMAGEPICKER: "ImagePicker screen",
-  },
+
+ 
+    
+  
   PROFILE_NAVIGATION: {
     INDEX: "Profile navigation",
+  },
+  AUTH_NAVIGATION:{
+    INDEX: "Auth Navigation",
+    LOGIN: "Login Page",
+    REGISTER: "Join Us",
+  },
+  HOME_NAVIGATION: {
+    INDEX: "Home Navigation",
+    HOME: "Trips",
+    TRIP_DETAILS: "Trip Details",
+    IMAGEPICKER: "ImagePicker screen",
+
   },
 };
 export default ROUTES;
