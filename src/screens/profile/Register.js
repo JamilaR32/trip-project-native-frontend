@@ -1,5 +1,6 @@
 //\\ بسم الله الرحمن الرحيم //\\
 
+//
 import {
   Button,
   Image,
@@ -15,6 +16,7 @@ import ROUTES from "../../navigation";
 
 const Register = () => {
   const navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -24,8 +26,13 @@ const Register = () => {
         alignItems: "center",
       }}
     >
-      <Text>Image</Text>
-      <Image placeholder="Pick an image"></Image>
+      <Button
+        title="Go to imagepicker"
+        onPress={() => {
+          navigation.navigate(ROUTES.HOME_NAVIGATION.IMAGEPICKER);
+        }}
+      />
+
       <Text>Bio</Text>
       <TextInput placeholder="Enter your bio" />
       <Text>Username</Text>
