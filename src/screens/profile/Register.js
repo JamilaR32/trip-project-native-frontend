@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../navigation";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -19,28 +20,71 @@ const Register = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
+        gap: 5,
+        backgroundColor: "#F5EEF8",
       }}
     >
       <Text>Image</Text>
       <Image placeholder="Pick an image"></Image>
       <Text>Bio</Text>
-      <TextInput placeholder="Enter your bio" />
+      <TextInput
+        placeholder="Enter your bio"
+        style={{
+          borderColor: "black",
+          borderCurve: "circular",
+          borderWidth: 0.5,
+          borderRadius: 20,
+          width: "60%",
+          backgroundColor: "#D7BDE2",
+        }}
+      />
       <Text>Username</Text>
-      <TextInput placeholder="Enter your username" />
+      <TextInput
+        placeholder="Enter your username"
+        style={{
+          borderColor: "black",
+          borderCurve: "circular",
+          borderWidth: 0.5,
+          borderRadius: 20,
+          width: "60%",
+          backgroundColor: "#D7BDE2",
+        }}
+      />
       <Text>Password</Text>
-      <TextInput placeholder="Enter your password" />
-      <Button title="Register" />
-      <View>
-        <Pressable
+      <TextInput
+        placeholder="Enter your password"
+        style={{
+          borderColor: "black",
+          borderCurve: "circular",
+          borderWidth: 0.5,
+          borderRadius: 20,
+          width: "60%",
+          backgroundColor: "#D7BDE2",
+        }}
+      />
+      <Button color="#6C3483" title="Register" />
+      <View
+        style={{
+          flexDirection: "row",
+          gap: 5,
+        }}
+      >
+        <Text>Already a user?</Text>
+        <TouchableOpacity
           onPress={() => {
             navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
           }}
         >
-          <Text>Login</Text>
-        </Pressable>
+          <Text
+            style={{
+              color: "#FF33CE",
+            }}
+          >
+            Login
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
