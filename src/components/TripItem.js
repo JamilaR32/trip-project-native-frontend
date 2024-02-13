@@ -47,7 +47,7 @@ const TripItem = ({ title, destination, image, user }) => {
             backgroundColor: "pink",
           }}
         >
-          <Text> {user}</Text>
+          <Text>{user}</Text>
         </View>
       </View>
     </View>

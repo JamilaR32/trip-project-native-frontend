@@ -1,5 +1,6 @@
 //\\ بسم الله الرحمن الرحيم //\\
 
+//
 import {
   Button,
   Image,
@@ -9,13 +10,27 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../navigation";
+import { register } from "../../api/auth";
+import { useMutation } from "@tanstack/react-query";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Register = () => {
   const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState({});
+
+  const { mutate } = useMutation({
+    mutationFn: () => register(userInfo),
+    onSuccess: () => {
+      navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
+    },
+  });
+  const handleFormSubmit = (e) => {
+    //e.preventDefault();
+    mutate();
+  };
   return (
     <View
       style={{
@@ -26,11 +41,19 @@ const Register = () => {
         backgroundColor: "#F5EEF8",
       }}
     >
-      <Text>Image</Text>
-      <Image placeholder="Pick an image"></Image>
+      {/* <Button
+        title="Go to imagepicker"
+        onPress={() => {
+          navigation.navigate(ROUTES.HOME_NAVIGATION.IMAGEPICKER);
+        }}
+      /> */}
+
       <Text>Bio</Text>
       <TextInput
         placeholder="Enter your bio"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, bio: text });
+        }}
         style={{
           borderColor: "black",
           borderCurve: "circular",
@@ -43,6 +66,9 @@ const Register = () => {
       <Text>Username</Text>
       <TextInput
         placeholder="Enter your username"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, username: text });
+        }}
         style={{
           borderColor: "black",
           borderCurve: "circular",
@@ -55,16 +81,26 @@ const Register = () => {
       <Text>Password</Text>
       <TextInput
         placeholder="Enter your password"
-        style={{
-          borderColor: "black",
-          borderCurve: "circular",
-          borderWidth: 0.5,
-          borderRadius: 20,
-          width: "60%",
-          backgroundColor: "#D7BDE2",
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, password: text });
         }}
       />
-      <Button color="#6C3483" title="Register" />
+
+      <Button color="#6C3483" title="Register" onPress={mutate} />
+
+      <View>
+        <Pressable
+          style={{
+            borderColor: "black",
+            borderCurve: "circular",
+            borderWidth: 0.5,
+            borderRadius: 20,
+            width: "60%",
+            backgroundColor: "#D7BDE2",
+          }}
+        />
+      </View>
+
       <View
         style={{
           flexDirection: "row",
@@ -72,11 +108,7 @@ const Register = () => {
         }}
       >
         <Text>Already a user?</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
-          }}
-        >
+        <TouchableOpacity onPress={() => {}}>
           <Text
             style={{
               color: "#FF33CE",

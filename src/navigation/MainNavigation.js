@@ -5,6 +5,7 @@ import HomeNavigation from "./home/HomeNavigation";
 import AuthNavigation from "./AuthNavigation";
 import ROUTES from ".";
 import { FontAwesome } from "@expo/vector-icons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
 const MainNavigation = () => {
@@ -18,6 +19,9 @@ const MainNavigation = () => {
         options={{
           title: "Home",
           tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />,
+          // tabBarIcon: ({ color, size }) => (
+          //   <MaterialCommunityIcons name="home" color={color} size={size} />
+          // ),
         }}
         name={ROUTES.HOME_NAVIGATION.INDEX}
         component={HomeNavigation}
@@ -25,6 +29,9 @@ const MainNavigation = () => {
       <Tab.Screen
         options={{
           title: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
         }}
         name={ROUTES.AUTH_NAVIGATION.INDEX}
         component={AuthNavigation}

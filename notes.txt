@@ -21,3 +21,6 @@ git push --set-upstream origin YourBranchName // we agree to name using our own 
 //npm install @react-navigation/native //getting started
 //npm install @react-navigation/stack //stack
 //npm install react-native-gesture-handler //If you have a bare React Native project, in your project directory, run:
+
+//imagepicker library 
+//npx expo install expo-image-picker
