@@ -10,13 +10,29 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../navigation";
+import { register } from "../../api/auth";
+import { useMutation } from "@tanstack/react-query";
 
 const Register = () => {
   const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState({});
+  const [userBio, setUserBio] = useState({});
+  const [userPassword, setUserPassword] = useState({});
+  //const [userInfo, setUserInfo] = useState({});
 
+  const { mutate } = useMutation({
+    mutationFn: () => register(userInfo),
+    onSuccess: () => {
+      navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
+    },
+  });
+  const handleFormSubmit = (e) => {
+    //e.preventDefault();
+    mutate();
+  };
   return (
     <View
       style={{
@@ -26,27 +42,42 @@ const Register = () => {
         alignItems: "center",
       }}
     >
-      <Button
+      {/* <Button
         title="Go to imagepicker"
         onPress={() => {
           navigation.navigate(ROUTES.HOME_NAVIGATION.IMAGEPICKER);
         }}
-      />
+      /> */}
 
       <Text>Bio</Text>
-      <TextInput placeholder="Enter your bio" />
+      <TextInput
+        placeholder="Enter your bio"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, bio: text });
+        }}
+      />
       <Text>Username</Text>
-      <TextInput placeholder="Enter your username" />
+      <TextInput
+        placeholder="Enter your username"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, username: text });
+        }}
+      />
       <Text>Password</Text>
-      <TextInput placeholder="Enter your password" />
-      <Button title="Register" />
+      <TextInput
+        placeholder="Enter your password"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, password: text });
+        }}
+      />
+      {/* <Button title="Register" /> */}
       <View>
         <Pressable
           onPress={() => {
-            navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
+            mutate();
           }}
         >
-          <Text>Login</Text>
+          <Text>Register</Text>
         </Pressable>
       </View>
     </View>
