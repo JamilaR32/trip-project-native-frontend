@@ -17,6 +17,7 @@ const HomeNavigation = () => {
         name={ROUTES.HOME_NAVIGATION.IMAGEPICKER}
         component={ImagePicker}
       /> */}
+
       <Stack.Screen
         name={ROUTES.HOME_NAVIGATION.TRIP_DETAILS}
         component={TripDetails}

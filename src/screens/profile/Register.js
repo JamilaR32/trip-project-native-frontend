@@ -15,6 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../navigation";
 import { register } from "../../api/auth";
 import { useMutation } from "@tanstack/react-query";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -36,6 +37,8 @@ const Register = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        gap: 5,
+        backgroundColor: "#F5EEF8",
       }}
     >
       {/* <Button
@@ -51,12 +54,28 @@ const Register = () => {
         onChangeText={(text) => {
           setUserInfo({ ...userInfo, bio: text });
         }}
+        style={{
+          borderColor: "black",
+          borderCurve: "circular",
+          borderWidth: 0.5,
+          borderRadius: 20,
+          width: "60%",
+          backgroundColor: "#D7BDE2",
+        }}
       />
       <Text>Username</Text>
       <TextInput
         placeholder="Enter your username"
         onChangeText={(text) => {
           setUserInfo({ ...userInfo, username: text });
+        }}
+        style={{
+          borderColor: "black",
+          borderCurve: "circular",
+          borderWidth: 0.5,
+          borderRadius: 20,
+          width: "60%",
+          backgroundColor: "#D7BDE2",
         }}
       />
       <Text>Password</Text>
@@ -66,15 +85,38 @@ const Register = () => {
           setUserInfo({ ...userInfo, password: text });
         }}
       />
-      {/* <Button title="Register" /> */}
+
+      <Button color="#6C3483" title="Register" onPress={mutate} />
+
       <View>
         <Pressable
-          onPress={() => {
-            mutate();
+          style={{
+            borderColor: "black",
+            borderCurve: "circular",
+            borderWidth: 0.5,
+            borderRadius: 20,
+            width: "60%",
+            backgroundColor: "#D7BDE2",
           }}
-        >
-          <Text>Register</Text>
-        </Pressable>
+        />
+      </View>
+
+      <View
+        style={{
+          flexDirection: "row",
+          gap: 5,
+        }}
+      >
+        <Text>Already a user?</Text>
+        <TouchableOpacity onPress={() => {}}>
+          <Text
+            style={{
+              color: "#FF33CE",
+            }}
+          >
+            Login
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
