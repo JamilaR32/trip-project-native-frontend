@@ -19,9 +19,6 @@ import { useMutation } from "@tanstack/react-query";
 const Register = () => {
   const navigation = useNavigation();
   const [userInfo, setUserInfo] = useState({});
-  const [userBio, setUserBio] = useState({});
-  const [userPassword, setUserPassword] = useState({});
-  //const [userInfo, setUserInfo] = useState({});
 
   const { mutate } = useMutation({
     mutationFn: () => register(userInfo),
@@ -37,7 +34,6 @@ const Register = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
       }}
