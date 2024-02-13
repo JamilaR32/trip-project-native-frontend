@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigation from "./home/HomeNavigation";
 import AuthNavigation from "./AuthNavigation";
 import ROUTES from ".";
+import { FontAwesome } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const MainNavigation = () => {
@@ -16,9 +17,7 @@ const MainNavigation = () => {
       <Tab.Screen
         options={{
           title: "Home",
-          //   tabBarIcon: {
-          //     color: "red",
-          //   },
+          tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />,
         }}
         name={ROUTES.HOME_NAVIGATION.INDEX}
         component={HomeNavigation}

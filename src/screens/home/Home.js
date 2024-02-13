@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import UserContext from "../../context/UserContext";
 import { useQuery } from "@tanstack/react-query";
@@ -13,11 +13,12 @@ const Home = () => {
   });
   const allTrips = trips?.map((trip) => {
     return (
-      <View>
+      <View key={trip._id}>
         <TripItem
           title={trip.title}
           destination={trip.destination}
           user={trip.user}
+          image={trip.image}
         />
       </View>
     );
@@ -29,7 +30,7 @@ const Home = () => {
         flex: 1,
       }}
     >
-      {allTrips}
+      <ScrollView>{allTrips}</ScrollView>
     </View>
   );
 };
