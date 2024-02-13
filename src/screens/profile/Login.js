@@ -8,13 +8,25 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../navigation";
+import { login } from "../../api/auth";
+import { useMutation } from "@tanstack/react-query";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Login = () => {
   const navigation = useNavigation();
+
+  const [userInfo, setUserInfo] = useState({});
+
+  const { mutate } = useMutation({
+    mutationFn: () => login(userInfo),
+    onSuccess: () => {
+      navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
+    },
+  });
+
   return (
     <View
       style={{
@@ -28,6 +40,9 @@ const Login = () => {
       <Text>Username</Text>
       <TextInput
         placeholder="Enter your username"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, username: text });
+        }}
         style={{
           borderColor: "black",
           borderCurve: "circular",
@@ -39,17 +54,20 @@ const Login = () => {
       />
       <Text>Password</Text>
       <TextInput
-        style={{
-          borderColor: "black",
-          borderCurve: "circular",
-          borderWidth: 0.5,
-          borderRadius: 20,
-          width: "60%",
-          backgroundColor: "#D7BDE2",
-        }}
         placeholder="Enter your password"
+        onChangeText={(text) => {
+          setUserInfo({ ...userInfo, password: text });
+        }}
       />
-      <Button color="#6C3483" title="Login" />
+      <View>
+        <Button
+          title="Login"
+          onPress={() => {
+            mutate();
+          }}
+        />
+      </View>
+
       <View
         style={{
           flexDirection: "row",
@@ -57,11 +75,8 @@ const Login = () => {
         }}
       >
         <Text>Don't have an account?</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate(ROUTES.AUTH_NAVIGATION.REGISTER);
-          }}
-        >
+
+        <TouchableOpacity>
           <Text
             style={{
               color: "#FF33CE",

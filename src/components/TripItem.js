@@ -5,7 +5,10 @@ import { getAllTrips } from "../api/trips";
 import { BASE_URL } from "../api";
 
 const TripItem = ({ title, destination, image, user }) => {
+
   console.log(`${BASE_URL}/${image}`);
+
+
   return (
     <View>
       <View
@@ -27,6 +30,7 @@ const TripItem = ({ title, destination, image, user }) => {
             // backgroundColor: "yellow",
           }}
         >
+
           <Image
             style={{
               width: "100%",
@@ -38,6 +42,8 @@ const TripItem = ({ title, destination, image, user }) => {
               uri: `${BASE_URL}/${image}`,
             }}
           />
+
+
           <Text>{destination}</Text>
         </View>
         <View
@@ -47,7 +53,10 @@ const TripItem = ({ title, destination, image, user }) => {
             backgroundColor: "pink",
           }}
         >
-          <Text> {user}</Text>
+
+
+          <Text>{user}</Text>
+
         </View>
       </View>
     </View>
