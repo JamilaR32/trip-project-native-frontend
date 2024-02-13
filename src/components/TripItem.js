@@ -5,7 +5,14 @@ import { getAllTrips } from "../api/trips";
 import { BASE_URL } from "../api";
 
 const TripItem = ({ title, destination, image, user }) => {
+<<<<<<< HEAD
   console.log(`${BASE_URL}/${image}`);
+=======
+
+  console.log(`${BASE_URL}/${image}`);
+
+
+>>>>>>> e62518f850cd227c53cd9d69aaee2696961c0b59
   return (
     <View>
       <View
@@ -27,6 +34,10 @@ const TripItem = ({ title, destination, image, user }) => {
             // backgroundColor: "yellow",
           }}
         >
+<<<<<<< HEAD
+=======
+
+>>>>>>> e62518f850cd227c53cd9d69aaee2696961c0b59
           <Image
             style={{
               width: "100%",
@@ -38,6 +49,11 @@ const TripItem = ({ title, destination, image, user }) => {
               uri: `${BASE_URL}/${image}`,
             }}
           />
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e62518f850cd227c53cd9d69aaee2696961c0b59
           <Text>{destination}</Text>
         </View>
         <View
@@ -47,7 +63,14 @@ const TripItem = ({ title, destination, image, user }) => {
             backgroundColor: "pink",
           }}
         >
+<<<<<<< HEAD
           <Text>{user}</Text>
+=======
+
+
+          <Text>{user}</Text>
+
+>>>>>>> e62518f850cd227c53cd9d69aaee2696961c0b59
         </View>
       </View>
     </View>
