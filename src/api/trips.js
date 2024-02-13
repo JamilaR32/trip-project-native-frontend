@@ -3,7 +3,7 @@ import { instance } from ".";
 import React from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import FeatherIcon from `react-native-vector-icons/Feather`
+// import {} from `react-native-vector`
 //imports
 //work
 function Sample() {
@@ -26,7 +26,7 @@ function Sample() {
           >
             <View style={styles.profileAction}>
               <Text style={styles.profileActionText}>Edit Profile</Text>
-              <FeatherIcon name="edit" color="blue" size={16}/>
+              {/* <FeatherIcon name="edit" color="blue" size={16}/> */}
             </View>
           </TouchableOpacity>
         </View>
@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
   },
   profileActionText: {
     marginRight: 8,
-    fontSize:15,
-    fontWeight:`600`,
-    color:`red`
+    fontSize: 15,
+    fontWeight: `600`,
+    color: `red`,
   },
 });
 //work

@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getAllTrips } from "../api/trips";
 
-const TripItem = (title, destination, image, user) => {
+const TripItem = ({ title, destination, image, user }) => {
   return (
     <View>
       <View
@@ -22,7 +22,7 @@ const TripItem = (title, destination, image, user) => {
             backgroundColor: "yellow",
           }}
         >
-          {descrition}
+          <Text>{destination}</Text>
         </View>
         <View
           style={{
@@ -31,7 +31,7 @@ const TripItem = (title, destination, image, user) => {
             backgroundColor: "pink",
           }}
         >
-          {user}
+          <Text>{user}</Text>
         </View>
       </View>
     </View>
