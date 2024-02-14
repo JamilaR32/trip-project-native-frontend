@@ -1,13 +1,10 @@
 //\\ بسم الله الرحمن الرحيم //\\
 const ROUTES = {
-
- 
-    
-  
   PROFILE_NAVIGATION: {
     INDEX: "Profile navigation",
+    PROFILE: "Profile page",
   },
-  AUTH_NAVIGATION:{
+  AUTH_NAVIGATION: {
     INDEX: "Auth Navigation",
     LOGIN: "Login Page",
     REGISTER: "Join Us",
@@ -17,7 +14,6 @@ const ROUTES = {
     HOME: "Trips",
     TRIP_DETAILS: "Trip Details",
     IMAGEPICKER: "ImagePicker screen",
-
   },
 };
 export default ROUTES;
