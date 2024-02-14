@@ -1,95 +1,107 @@
-//\\ بسم الله الرحمن الرحيم //\\
-
+import React, { useState } from "react";
 import {
   Button,
-  Pressable,
-  StyleSheet,
   Text,
   TextInput,
   View,
+  StyleSheet,
+  Pressable,
 } from "react-native";
-import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../navigation";
 import { login } from "../../api/auth";
 import { useMutation } from "@tanstack/react-query";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Login = () => {
   const navigation = useNavigation();
-
   const [userInfo, setUserInfo] = useState({});
 
   const { mutate } = useMutation({
     mutationFn: () => login(userInfo),
     onSuccess: () => {
-      navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN);
+      navigation.navigate(ROUTES.PROFILE_NAVIGATION.PROFILE);
     },
   });
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 5,
-        backgroundColor: "#F5EEF8",
-      }}
-    >
-      <Text>Username</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>Username</Text>
       <TextInput
         placeholder="Enter your username"
-        onChangeText={(text) => {
-          setUserInfo({ ...userInfo, username: text });
-        }}
-        style={{
-          borderColor: "black",
-          borderCurve: "circular",
-          borderWidth: 0.5,
-          borderRadius: 20,
-          width: "60%",
-          backgroundColor: "#D7BDE2",
-        }}
+        onChangeText={(text) => setUserInfo({ ...userInfo, username: text })}
+        style={styles.input}
       />
-      <Text>Password</Text>
+      <Text style={styles.label}>Password</Text>
       <TextInput
         placeholder="Enter your password"
-        onChangeText={(text) => {
-          setUserInfo({ ...userInfo, password: text });
-        }}
+        secureTextEntry={true} // Hides password text
+        onChangeText={(text) => setUserInfo({ ...userInfo, password: text })}
+        style={styles.input}
       />
-      <View>
-        <Button
-          title="Login"
-          onPress={() => {
-            mutate();
-          }}
-        />
+      <View style={styles.buttonContainer}>
+        <Pressable onPress={() => mutate()} style={styles.loginButton}>
+          <Text style={styles.loginButtonText}>Login</Text>
+        </Pressable>
       </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          gap: 5,
-        }}
-      >
+      <View style={styles.footer}>
         <Text>Don't have an account?</Text>
-
-        <TouchableOpacity>
-          <Text
-            style={{
-              color: "#FF33CE",
-            }}
-          >
-            JoinUs
-          </Text>
-        </TouchableOpacity>
+        <Pressable
+          onPress={() => navigation.navigate(ROUTES.AUTH_NAVIGATION.REGISTER)}
+        >
+          <Text style={styles.link}>Join Us</Text>
+        </Pressable>
       </View>
     </View>
   );
 };
 
-export default Login;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#F5EEF8",
+  },
+  input: {
+    borderColor: "black",
+    borderWidth: 0.5,
+    borderRadius: 20,
+    width: "80%",
+    padding: 10,
+    marginVertical: 10, // Adds space above and below the input
+    backgroundColor: "#D7BDE2",
+  },
+  buttonContainer: {
+    marginTop: 20,
+    width: "80%",
+    borderRadius: 20,
+  },
+  label: {
+    alignSelf: "flex-start",
+    marginLeft: "10%", // Adjust based on your layout preference
+  },
+  footer: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  link: {
+    color: "#FF33CE",
+    marginLeft: 5,
+  },
+  loginButton: {
+    backgroundColor: "#8E44AD",
+    padding: 10,
+    borderRadius: 20,
+    //width: "80%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  loginButtonText: {
+    color: "white",
+    fontSize: 16,
+  },
+});
 
-const styles = StyleSheet.create({});
+export default Login;

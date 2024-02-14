@@ -41,12 +41,12 @@ const Register = () => {
         backgroundColor: "#F5EEF8",
       }}
     >
-      {/* <Button
+      <Button
         title="Go to imagepicker"
         onPress={() => {
           navigation.navigate(ROUTES.HOME_NAVIGATION.IMAGEPICKER);
         }}
-      /> */}
+      />
 
       <Text>Bio</Text>
       <TextInput
@@ -108,7 +108,9 @@ const Register = () => {
         }}
       >
         <Text>Already a user?</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(ROUTES.AUTH_NAVIGATION.LOGIN)}
+        >
           <Text
             style={{
               color: "#FF33CE",
