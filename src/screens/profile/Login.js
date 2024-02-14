@@ -45,6 +45,7 @@ const Login = () => {
       </View>
       <View style={styles.footer}>
         <Text>Don't have an account?</Text>
+
         <Pressable
           onPress={() => navigation.navigate(ROUTES.AUTH_NAVIGATION.REGISTER)}
         >

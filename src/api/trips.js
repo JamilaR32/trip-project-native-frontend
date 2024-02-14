@@ -88,4 +88,9 @@ const getAllTrips = async () => {
   return res.data;
 };
 
-export { getAllTrips };
+const getTripById = async (tripId) => {
+  const res = await instance.get(`/api/trips/${tripId}`);
+  return res.data;
+};
+
+export { getAllTrips, getTripById };

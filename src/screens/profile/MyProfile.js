@@ -4,12 +4,15 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigation } from "@react-navigation/native";
 import { deleteToken } from "../../api/storage";
 import ROUTES from "../../navigation";
+import { me } from "../../api/auth";
 
 const MyProfile = () => {
   const navigation = useNavigation();
   const { data } = useQuery({
-    queryKey: [],
-    queryFn: "",
+    queryKey: ["me"],
+    queryFn: () => {
+      me();
+    },
   });
   return (
     <View>
