@@ -1,64 +1,79 @@
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getAllTrips } from "../api/trips";
 import { BASE_URL } from "../api";
+import { useNavigation } from "@react-navigation/native";
+import ROUTES from "../navigation";
 
-const TripItem = ({ title, destination, image, user }) => {
-
-  console.log(`${BASE_URL}/${image}`);
-
-
+const TripItem = ({ title, destination, image, user, key, _id }) => {
+  const navigation = useNavigation();
   return (
-    <View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "white",
-          height: 200,
-          width: "60%",
-          borderRadius: 20,
-          overflow: "hidden",
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "white",
+        height: "100%",
+        width: "90%",
+        borderRadius: 20,
+        overflow: "hidden",
+      }}
+    >
+      <Pressable
+        onPress={() => {
+          navigation.navigate(ROUTES.HOME_NAVIGATION.TRIP_DETAILS, {
+            _id: _id,
+          });
         }}
       >
         <View
           style={{
-            height: "70%",
+            flex: 1,
+            flexDirection: "row",
+            height: "100%",
             width: "100%",
-            // backgroundColor: "yellow",
+            backgroundColor: "yellow",
           }}
         >
+          <View>
+            <Image
+              style={{
+                width: 100,
+                height: 100,
+                borderRadius: 100,
+                backgroundColor: "black",
+              }}
+              source={{
+                uri: `${BASE_URL}/${image}`,
+              }}
+            />
+          </View>
 
-          <Image
+          <View
             style={{
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
               width: "100%",
               height: "100%",
-              borderRadius: 100,
-              backgroundColor: "black",
+              backgroundColor: "pink",
+              // overflow: "hidden",
             }}
-            source={{
-              uri: `${BASE_URL}/${image}`,
-            }}
-          />
-
-
-          <Text>{destination}</Text>
+          >
+            <Text
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              {title}
+            </Text>
+            <Text>{destination}</Text>
+          </View>
         </View>
-        <View
-          style={{
-            height: "30%",
-            width: "100%",
-            backgroundColor: "pink",
-          }}
-        >
-
-
-          <Text>{user}</Text>
-
-        </View>
-      </View>
+      </Pressable>
     </View>
   );
 };
