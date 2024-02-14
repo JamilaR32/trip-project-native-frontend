@@ -76,7 +76,11 @@ const Login = () => {
       >
         <Text>Don't have an account?</Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(ROUTES.AUTH_NAVIGATION.REGISTER);
+          }}
+        >
           <Text
             style={{
               color: "#FF33CE",
